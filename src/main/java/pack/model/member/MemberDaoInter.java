@@ -5,6 +5,8 @@ import pack.controller.member.MemberBean;
 public interface MemberDaoInter {
 	MemberDto login(MemberBean bean);  //로그인
 	
+	MemberDto findid(MemberBean bean);  //아이디 찾기
+	
 	boolean insertData(MemberBean bean);  //회원가입
 	
 	boolean deleteData(String user_id);  //회원탈퇴

@@ -17,7 +17,7 @@ public class LoginController {
 	@Autowired
 	private MemberDaoInter memberDaoInter;
  
-	@RequestMapping(value = "login", method=RequestMethod.GET)
+	@RequestMapping(value = "login", method = RequestMethod.GET)
 	public String login() {
 		
 		return "member/loginform";

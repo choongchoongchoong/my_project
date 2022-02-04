@@ -44,6 +44,12 @@ public class MemberDaoImpl implements MemberDaoInter {
 		}
 	}
 
+	@Override
+	public MemberDto findid(MemberBean bean) {  //아이디 찾기
+		
+		return memberAnnoInter.findid(bean);
+	}
+
 
 	
 	
