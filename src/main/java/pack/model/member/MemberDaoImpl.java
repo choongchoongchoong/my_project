@@ -25,6 +25,13 @@ public class MemberDaoImpl implements MemberDaoInter {
 			return false;
 		}
 	}
+	
+	@Override
+	public int checkid(MemberBean bean) {  //아이디 중복체크
+		int result = memberAnnoInter.checkid(bean);
+		
+		return result;
+	}
 
 	@Override
 	public MemberDto login(MemberBean bean) {  //로그인
@@ -49,6 +56,7 @@ public class MemberDaoImpl implements MemberDaoInter {
 		
 		return memberAnnoInter.findid(bean);
 	}
+
 
 
 	

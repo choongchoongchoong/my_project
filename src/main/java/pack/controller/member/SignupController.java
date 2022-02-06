@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import pack.model.member.MemberDaoInter;
 
@@ -19,6 +20,7 @@ public class SignupController {
 		return "member/signupform";
 	}
 	
+	//회원가입 등록
 	@RequestMapping(value = "insertMember", method = RequestMethod.POST)
 	public String submit(MemberBean bean, Model model) {
 		System.out.println(bean.getUser_id());
@@ -35,6 +37,16 @@ public class SignupController {
 			
 			return "redirect:/error";
 		}
+	}
+	
+	//아이디 중복체크
+	@ResponseBody
+	@RequestMapping(value = "checkid", method = RequestMethod.POST)
+	public int checkid(MemberBean bean) throws Exception {
+		int result = memberDaoInter.checkid(bean);
+		System.out.println("중복확인 : " + result);
+		
+		return result;
 	}
 
 }

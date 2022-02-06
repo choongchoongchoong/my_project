@@ -8,6 +8,7 @@ public interface MemberDaoInter {
 	MemberDto findid(MemberBean bean);  //아이디 찾기
 	
 	boolean insertData(MemberBean bean);  //회원가입
+	int checkid(MemberBean bean);  //아이디 중복체크
 	
 	boolean deleteData(String user_id);  //회원탈퇴
 	

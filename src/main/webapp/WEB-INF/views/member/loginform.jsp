@@ -20,12 +20,8 @@
 			location.href = "signup";
 		})
 
-		$("#findIdBtn").on("click", function() {
+		$("#findBtn").on("click", function() {
 			location.href = "findid";
-		})
-
-		$("#findPwdBtn").on("click", function() {
-			location.href = "findpwd";
 		})
 	})
 </script>
@@ -44,8 +40,8 @@
 		</div>	
 		<button type="submit" class="btn btn-primary">로그인</button>
 		<button type="button" class="btn btn-primary" id="registerBtn">회원가입</button>
-		<button type="button" class="btn btn-primary" id="findIdBtn">아이디 찾기</button>
-		<button type="button" class="btn btn-primary" id="findPwdBtn">비밀번호 찾기</button>
+		<button type="button" class="btn btn-primary" id="findBtn">아이디/비밀번호 찾기</button>
+		<button type="button" class="btn btn-primary" onclick="location.href='/'">메인 페이지로</button>
 	</form>
 </div>
 </body>

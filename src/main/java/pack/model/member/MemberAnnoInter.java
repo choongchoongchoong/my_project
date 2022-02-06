@@ -28,6 +28,10 @@ public interface MemberAnnoInter {
 			+ ",#{user_birth},#{user_email},#{user_address},#{user_tel},0)")
 	public int insertData(MemberBean bean);
 	
+	//아이디 중복체크
+	@Select("SELECT COUNT(*) FROM project_member WHERE user_id=#{user_id}")
+	public int checkid(MemberBean bean);
+	
 	//회원정보 수정
 	@Update("UPDATE project_member SET user_pwd=#{user_pwd},user_name=#{user_name},"
 			+ "user_sex=#{user_sex},user_birth=#{user_birth},user_email=#{user_email},"
