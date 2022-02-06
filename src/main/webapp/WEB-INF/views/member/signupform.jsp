@@ -11,7 +11,7 @@
 <meta charset="UTF-8">
 <title>** 회원가입 페이지 **</title>
 <style>
-/* 입력 유효성 검사 */
+/* 필드 입력 유효성 검사 */
 .input_check_id{
 	display: none;
 }
@@ -37,6 +37,22 @@
 	display: none;
 }
 
+/* 아이디 입력값 유효성 검사 */
+.id_input_valid{
+	display: none;
+}
+.id_input_invalid{
+	display: none;
+}
+
+/* 비밀번호 입력값 유효성 검사 */
+.pwd_input_valid{
+	display: none;
+}
+.pwd_input_invalid{
+	display: none;
+}
+
 /* 비밀번호 확인 일치 유효성 검사 */
 .pwdck_input_same{
 	display: none;
@@ -48,16 +64,18 @@
 
 <script type="text/javascript">
 /* 유효성 검사 통과유무 변수 */
-var idCheck = false;      //아이디
-var idckCheck = false;    //아이디 중복 체크
-var pwdCheck = false;     //비밀번호
-var pwdckCheck = false;   //비밀번호 확인
-var pwdSameCheck = false; //비밀번호 확인 일치 체크
-var nameCheck = false;    //이름
-var birthCheck = false;   //생년월일
-var emailCheck = false;   //이메일
-var addressCheck = false; //주소
-var telCheck = false;     //전화번호
+var idCheck = false;       //아이디
+var idckCheck = false;     //아이디 중복 체크
+var idInputCheck = false;  //아이디 입력값 체크
+var pwdCheck = false;      //비밀번호
+var pwdInputCheck = false; //아이디 입력값 체크
+var pwdckCheck = false;    //비밀번호 확인
+var pwdSameCheck = false;  //비밀번호 확인 일치 체크
+var nameCheck = false;     //이름
+var birthCheck = false;    //생년월일
+var emailCheck = false;    //이메일
+var addressCheck = false;  //주소
+var telCheck = false;      //전화번호
 
 /* 회원가입 처리 */
 $(document).ready(function(){
@@ -169,31 +187,6 @@ function fn_checkid(){
 	});
 };
 
-
-/* //아이디의 유효성 여부
-let isIdValid = false;
-$("#user_id").on("input", function(){
-	let inputId = $("#user_id").val();  //입력한 아이디를 읽어와서
-	//ajax 요청으로 서버에 보내서 사용 가능한지 응답받는다.
-	$.ajax({
-		url:"checkid.jsp",
-		method:"get",
-		data:"inputId="+inputId,
-		success:function(responseData){
-			//일단 validation 두개의 클래스를 삭제
-			$("#user_id").removeClass("is-valid is-invalid");
-			if(responseData.canUse){  //사용 가능한 아이디
-				$("#user_id").addClass("is-valid");
-				isIdValid = true;
-			}else{  //사용 불가능한 아이디
-				$("#user_id").addClass("is-invalid");
-				isIdValid = false;
-			}
-			setButtonState();
-		}
-	});
-}); */
-
 </script>
 </head>
 <body>
@@ -202,22 +195,27 @@ $("#user_id").on("input", function(){
 		<form method="post" name="frm" id="signup_form">
 			<div class="col-md-6 mb-3">
 			  <label for="user_id">아이디</label>
-			  <input type="text" class="user_id_input form-control" id="user_id" name="user_id" placeholder="영문, 숫자로 입력해주세요.">
+			  <div>알파벳 소문자와 숫자로만 구성된 5~10자리 아이디를 입력해주세요.<br>
+			  (첫글자는 알파벳이어야 합니다.)</div>
+			  <input type="text" class="user_id_input form-control" id="user_id" name="user_id">
 			  <button type="button" id="idChk" onclick="fn_checkid();" value="N">중복확인</button>
 			  <div class="input_check_id invalid-feedback">아이디를 입력해주세요.</div>
-			<div class="valid-feedback">사용 가능한 아이디입니다.</div>
-			<div class="invalid-feedback">사용 불가능한 아이디입니다.</div>
+			<div class="id_input_valid valid-feedback">사용 가능한 아이디입니다.</div>
+			<div class="id_input_invalid invalid-feedback">사용 불가능한 아이디입니다.</div>
 			</div>
 			
 			<div class="col-md-6 mb-3">
 			<label for="user_pwd">비밀번호</label>
-			<input type="password" class="user_pwd_input form-control" id="user_pwd" name="user_pwd" placeholder="영문, 숫자, 특수문자를 포함한 8~16자리" value="">
+			<div>알파벳과 숫자, 특수문자를 포함한 8~16자리 비밀번호를 입력해주세요.</div>
+			<input type="password" class="user_pwd_input form-control" id="user_pwd" name="user_pwd">
 			<div class="input_check_pwd invalid-feedback">비밀번호를 입력해주세요.</div>
+			<div class="pwd_input_valid valid-feedback">사용 가능한 비밀번호입니다.</div>
+			<div class="pwd_input_invalid invalid-feedback">사용 불가능한 비밀번호입니다.</div>
 			</div>
 		
 			<div class="col-md-6 mb-3">
 			<label for="user_pwdck">비밀번호 확인</label>
-			<input type="password" class="user_pwdck_input form-control" id="user_pwdck" name="user_pwdck" placeholder="한 번 더 입력해주세요." value="">
+			<input type="password" class="user_pwdck_input form-control" id="user_pwdck" name="user_pwdck">
 			<div class="input_check_pwdck invalid-feedback">비밀번호를 한 번 더 입력해주세요.</div>
 			<div class="pwdck_input_same valid-feedback">비밀번호가 일치합니다.</div>
 			<div class="pwdck_input_diff invalid-feedback">비밀번호가 일치하지 않습니다.</div>
@@ -264,19 +262,59 @@ $("#user_id").on("input", function(){
 	
 	
 <script>
+/* 아이디 입력값 유효성 검사 처리 */
+$('.user_id_input').on("propertychange change keyup paste input", function(){
+	
+	$('.input_check_id').css('display', 'none');
+	
+	let inputId = user_id.value;
+	let reg = /[\W]+/;  //특수문자를 찾는 정규표현식
+	let reg2 = /^[a-z].{4,9}$/;  //첫글자가 소문자 알파벳, 5~10글자인지 파악하는 정규표현식
+	let reg3 = /[A-Z]/;  //대문자 알파벳을 찾는 정규표현식
+	
+	if(reg.test(inputId) || !reg2.test(inputId) || reg3.test(inputId)){
+		$('.id_input_valid').css('display', 'none');
+		$('.id_input_invalid').css('display', 'block');
+		idInputCheck = false;
+	}else{
+		$('.id_input_valid').css('display', 'block');
+		$('.id_input_invalid').css('display', 'none');
+		idInputCheck = true;
+	}
+});
+
+/* 비밀번호 입력값 유효성 검사 처리 */
+$('.user_pwd_input').on("propertychange change keyup paste input", function(){
+	
+	$('.input_check_pwd').css('display', 'none');
+	
+	let inputPwd = user_pwd.value;
+	let reg = /[\W]+/; //특수문자를 찾는 정규표현식
+	
+	if(inputPwd.length < 8 || inputPwd.length > 16 || !reg.test(inputPwd)){
+		$('.pwd_input_valid').css('display', 'none');
+		$('.pwd_input_invalid').css('display', 'block');
+		pwdInputCheck = false;
+	}else{
+		$('.pwd_input_valid').css('display', 'block');
+		$('.pwd_input_invalid').css('display', 'none');
+		pwdInputCheck = true;
+	}
+});
+
 /* 비밀번호 일치 확인 유효성 검사 처리 */
 $('.user_pwdck_input').on("propertychange change keyup paste input", function(){
 	
 	$('.input_check_pwdck').css('display', 'none');
 	
-	if(user_pwd.value == user_pwdck.value){
-		$('.pwdck_input_same').css('display', 'block');
-		$('.pwdck_input_diff').css('display', 'none');
-		pwdSameCheck = true;
-	}else{
+	if(user_pwd.value != user_pwdck.value){
 		$('.pwdck_input_same').css('display', 'none');
 		$('.pwdck_input_diff').css('display', 'block');
 		pwdSameCheck = false;
+	}else{
+		$('.pwdck_input_same').css('display', 'block');
+		$('.pwdck_input_diff').css('display', 'none');
+		pwdSameCheck = true;
 	}
 });
 </script>	
