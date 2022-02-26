@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import pack.model.board.BoardDaoInter;
 
 @Controller
-public class InsertController {
+public class BoardInsertController {
 	@Autowired
 	private BoardDaoInter boardDaoInter;
 	
-	@RequestMapping(value = "insert", method = RequestMethod.GET)
+	@RequestMapping(value = "write", method = RequestMethod.GET)
 	public String insert() {
 		
-		return "insform";  //입력화면용 jsp를 forward 방식으로 호출 (서버에서 서버의 파일을 직접 호출 후 클라이언트에 전송)
+		return "board/insertform";  //입력화면용 jsp를 forward 방식으로 호출 (서버에서 서버의 파일을 직접 호출 후 클라이언트에 전송)
 	}
 	
 	@RequestMapping(value = "insert", method = RequestMethod.POST)

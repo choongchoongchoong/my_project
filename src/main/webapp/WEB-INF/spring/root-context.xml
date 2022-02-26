@@ -31,5 +31,10 @@
 		<property name="mapperInterface" value="pack.model.board.BoardAnnoInter"></property>
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
 	</bean>
+	
+	<bean class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="pack.model.selling.SellingAnnoInter"></property>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
 		
 </beans>

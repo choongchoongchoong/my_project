@@ -8,6 +8,8 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <!-- jquery -->
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- 우편번호 검색 -->
+<script src='http://dmaps.daum.net/map_js_init/postcode.v2.js'></script>
 <meta charset="UTF-8">
 <title>** 회원가입 페이지 **</title>
 <style>
@@ -187,12 +189,26 @@ function fn_checkid(){
 	});
 };
 
+/* 주소 병합 처리 변수 */
+var zip = $('#user_zipcode').val();
+var addr1 = $('#user_address1').val();
+var addr2 = $('#user_address2').val();
+
+/* 주소 병합 처리 */
+$(document).ready(function(){
+	
+	$("#submitBtn").click(function(){
+		/* 주소값 합쳐서 저장 */
+		$('#user_address').attr('value', zip + " " + addr1 + " " + addr2);
+	}
+};
+
 </script>
 </head>
 <body>
 	<div class="container">
 		<h4 class="mb-3">회원가입</h4>
-		<form method="post" name="frm" id="signup_form">
+		<form method="post" name="frm_signup" id="signup_form">
 			<div class="col-md-6 mb-3">
 			  <label for="user_id">아이디</label>
 			  <div>알파벳 소문자와 숫자로만 구성된 5~10자리 아이디를 입력해주세요.<br>
@@ -245,10 +261,18 @@ function fn_checkid(){
 		<div class="input_check_email invalid-feedback">이메일을 입력해주세요.</div>
 		</div>
 		
-		
-		<label for="user_address">주소</label>
-		<input type="text" class="user_adress_input form-control" id="user_address" name="user_address">
+		<div class="col-md-6 mb-3">
+		<input type="hidden" id="user_address" name="user_address" value="">
+		<label for="user_zipcode">우편번호</label>
+		<input type="text" id="user_zipcode" name="user_zipcode">
+		<input type="button" value="우편번호 검색" id="btnZipcode">
+		<br>
+		<label for="user_address">집주소</label>
+		<input type="text" class="user_address_input form-control" id="user_address1" name="user_address1" placeholder="우편번호 검색으로 자동입력이 가능합니다.">
 		<div class="input_check_address invalid-feedback">주소를 입력해주세요.</div>
+		<label for="user_address2">상세주소</label>
+		<input type="text" class="user_address2_input form-control" id="user_address2" name="user_address2" placeholder="건물명, 호수 등">
+		</div>
 		
 		
 		<label for="user_tel">전화번호</label>
@@ -289,7 +313,7 @@ $('.user_pwd_input').on("propertychange change keyup paste input", function(){
 	$('.input_check_pwd').css('display', 'none');
 	
 	let inputPwd = user_pwd.value;
-	let reg = /[\W]+/; //특수문자를 찾는 정규표현식
+	let reg = /[\W0-9a-zA-Z]+/; //특수문자를 찾는 정규표현식
 	
 	if(inputPwd.length < 8 || inputPwd.length > 16 || !reg.test(inputPwd)){
 		$('.pwd_input_valid').css('display', 'none');
@@ -305,19 +329,41 @@ $('.user_pwd_input').on("propertychange change keyup paste input", function(){
 /* 비밀번호 일치 확인 유효성 검사 처리 */
 $('.user_pwdck_input').on("propertychange change keyup paste input", function(){
 	
-	$('.input_check_pwdck').css('display', 'none');
+	$('.user_pwd_input').on("propertychange change keyup paste input", function(){
+		
+		$('.input_check_pwdck').css('display', 'none');
+		
+		if(user_pwd.value != user_pwdck.value){
+			$('.pwdck_input_same').css('display', 'none');
+			$('.pwdck_input_diff').css('display', 'block');
+			pwdSameCheck = false;
+		}else{
+			$('.pwdck_input_same').css('display', 'block');
+			$('.pwdck_input_diff').css('display', 'none');
+			pwdSameCheck = true;
+		}
+	});
 	
-	if(user_pwd.value != user_pwdck.value){
-		$('.pwdck_input_same').css('display', 'none');
-		$('.pwdck_input_diff').css('display', 'block');
-		pwdSameCheck = false;
-	}else{
-		$('.pwdck_input_same').css('display', 'block');
-		$('.pwdck_input_diff').css('display', 'none');
-		pwdSameCheck = true;
-	}
 });
-</script>	
+
+
+/* 우편번호 검색 처리 */
+var btnZipcode = document.getElementById('btnZipcode');
+if(btnZipcode != null){
+	btnZipcode.onclick = function(){
+		var frm = document.frm_signup;
+		new daum.Postcode({
+			oncomplete : function(data){
+				frm.user_zipcode.value = data.zonecode;
+				frm.user_address1.value = data.address;
+			}
+		}).open();
+	}
+}
+
+
+
+</script>
 
 </body>
 </html>

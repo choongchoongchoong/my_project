@@ -12,9 +12,8 @@
 <body>
 <h3>글쓰기 페이지</h3>
 <form action="insert" method="post">
-번호 : <input type="text" name="num"><br>
-이름 : <input type="text" name="name"><br>
-주소 : <input type="text" name="addr"><br>
+제목 : <input type="text" id="bd_title" name="bd_title"><br>
+내용 : <textarea id="bd_content" name="bd_content"><br>
 <br>
 <input type="submit" value="등록">
 </form>
