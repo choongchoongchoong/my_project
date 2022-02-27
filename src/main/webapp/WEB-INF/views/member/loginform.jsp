@@ -10,6 +10,44 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <meta charset="UTF-8">
 <title>** 로그인 페이지 **</title>
+<style>
+	html,
+	body {
+	  height: 100%;
+	}
+	
+	body {
+	  display: flex;
+	  align-items: center;
+	  padding-top: 40px;
+	  padding-bottom: 40px;
+	  background-color: #f5f5f5;
+	}
+	
+	.form-signin {
+	  width: 100%;
+	  max-width: 380px;
+	  padding: 15px;
+	  margin: auto;
+	}
+	
+	.form-signin .form-floating:focus-within {
+	  z-index: 2;
+	}
+	
+	.form-signin input[id="user_id"] {
+	  margin-bottom: -1px;
+	  border-bottom-right-radius: 0;
+	  border-bottom-left-radius: 0;
+	}
+	
+	.form-signin input[id="user_pwd"] {
+	  margin-bottom: 10px;
+	  border-top-left-radius: 0;
+	  border-top-right-radius: 0;
+	}
+</style>
+
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#logoutBtn").on("click", function() {
@@ -25,24 +63,28 @@
 		})
 	})
 </script>
+
 </head>
-<body>
-<div class="container">
-	<h4 class="mb-3">로그인</h4>
-	<form action="login" method="post">
-		<div class="col-md-6 mb-3">
-			<label for="user_id">아이디</label>
-			<input type="text" class="form-control" id="user_id" name="user_id">
-		</div>
-		<div class="col-md-6 mb-3">
-			<label for="user_pwd">비밀번호</label>
-			<input type="password" class="form-control" id="user_pwd" name="user_pwd">
-		</div>	
-		<button type="submit" class="btn btn-primary">로그인</button>
-		<button type="button" class="btn btn-primary" id="registerBtn">회원가입</button>
-		<button type="button" class="btn btn-primary" id="findBtn">아이디/비밀번호 찾기</button>
-		<button type="button" class="btn btn-primary" onclick="location.href='/'">메인 페이지로</button>
-	</form>
-</div>
+
+<body class="text-center">
+	<main class="form-signin">
+		<h1 class="h3 mb-3 fw-normal">로그인</h1>
+		<form action="login" method="post">
+			<div class="form-floating">
+				<input type="text" class="form-control" id="user_id" name="user_id">
+				<label for="user_id">아이디</label>
+			</div>
+			<div class="form-floating">
+				<input type="password" class="form-control" id="user_pwd" name="user_pwd">
+				<label class="form-label" for="user_pwd">비밀번호</label>
+			</div>
+			
+			<button type="submit" class="w-100 mb-3 btn btn-primary">로그인</button>
+			<button type="button" class="w-100 btn btn-primary" id="registerBtn">회원가입</button>
+			<hr>
+			<button type="button" class="btn btn-warning" id="findBtn">아이디/비밀번호 찾기</button>
+			<button type="button" class="btn btn-secondary" onclick="location.href='index.jsp'">메인 페이지로</button>
+		</form>
+	</main>
 </body>
 </html>

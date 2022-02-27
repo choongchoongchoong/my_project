@@ -29,15 +29,15 @@ public class LoginController {
 		HttpSession session = req.getSession();
 		MemberDto memberDto = memberDaoInter.login(bean);
 
-		if (memberDto != null) {
-			model.addAttribute("msg", bean.getUser_name()+"님 환영합니다.");
+		if(memberDto != null) {
+			model.addAttribute("msg", memberDto.getUser_name()+"님 환영합니다.");
 			model.addAttribute("url","/");
 			
 			session.setAttribute("loginSession", memberDto);
 			
 			return "redirect";
 			
-		} else {
+		}else {
 			model.addAttribute("msg","아이디와 비밀번호를 확인해주세요.");
 			model.addAttribute("url","/login");
 			

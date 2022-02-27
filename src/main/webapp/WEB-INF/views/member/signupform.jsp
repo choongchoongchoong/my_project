@@ -76,13 +76,18 @@ var pwdSameCheck = false;  //비밀번호 확인 일치 체크
 var nameCheck = false;     //이름
 var birthCheck = false;    //생년월일
 var emailCheck = false;    //이메일
+var emailInputCheck = false;  //이메일 형식 체크
 var addressCheck = false;  //주소
 var telCheck = false;      //전화번호
+var telInputCheck = false;  //전화번호 형식 체크
 
 /* 회원가입 처리 */
 $(document).ready(function(){
 	//회원등록 버튼
     $("#submitBtn").click(function(){
+		
+		/* 주소값 합쳐서 저장 */
+		$("#user_address").attr("value", $("#user_address").val() + " " + $("#user_address2").val())
 
 		/* 아이디 입력 유효성 검사 */
 		if(user_id.value == ""){
@@ -133,7 +138,7 @@ $(document).ready(function(){
 		    emailCheck = true;
 		}
 		/* 주소 입력 유효성 검사 */
-		if(user_address.value == ""){
+		if(user_address1.value == ""){
 		    $('.input_check_address').css('display', 'block');
 		    addressCheck = false;
 		}else{
@@ -150,8 +155,8 @@ $(document).ready(function(){
 		}
 		
 		/* 회원등록 */
-		if(idCheck && pwdCheck && pwdckCheck && pwdSameCheck && nameCheck && 
-				birthCheck && emailCheck && addressCheck && telCheck && 
+		if(idCheck && idInputCheck && pwdCheck && pwdckCheck && pwdSameCheck && nameCheck && 
+				birthCheck && emailCheck && emailInputCheck && addressCheck && telCheck && telInputCheck &&
 				$('#idChk').val() == "Y"){
 			if(confirm("회원가입 하시겠습니까?")) {
 				$("#signup_form").attr("action", "insertMember");
@@ -159,8 +164,12 @@ $(document).ready(function(){
 			}
 		}else if(pwdSameCheck == false){
 			alert("비밀번호를 다시 한 번 확인해주세요.");
-		}else if($('#idChk').val() == "N"){
+		}else if($("#idChk").val() == "N"){
 			alert("아이디 중복 확인을 해주세요.");
+		}else if(emailInputCheck == false){
+			alert("이메일 주소를 확인해주세요.");
+		}else if(telInputCheck == false){
+			alert("전화번호를 확인해주세요.");
 		}else{
 			alert("입력하지 않은 항목이 있습니다.");
 		}
@@ -189,19 +198,7 @@ function fn_checkid(){
 	});
 };
 
-/* 주소 병합 처리 변수 */
-var zip = $('#user_zipcode').val();
-var addr1 = $('#user_address1').val();
-var addr2 = $('#user_address2').val();
 
-/* 주소 병합 처리 */
-$(document).ready(function(){
-	
-	$("#submitBtn").click(function(){
-		/* 주소값 합쳐서 저장 */
-		$('#user_address').attr('value', zip + " " + addr1 + " " + addr2);
-	}
-};
 
 </script>
 </head>
@@ -222,7 +219,7 @@ $(document).ready(function(){
 			
 			<div class="col-md-6 mb-3">
 			<label for="user_pwd">비밀번호</label>
-			<div>알파벳과 숫자, 특수문자를 포함한 8~16자리 비밀번호를 입력해주세요.</div>
+			<div>8~16자리 비밀번호를 입력해주세요.</div>
 			<input type="password" class="user_pwd_input form-control" id="user_pwd" name="user_pwd">
 			<div class="input_check_pwd invalid-feedback">비밀번호를 입력해주세요.</div>
 			<div class="pwd_input_valid valid-feedback">사용 가능한 비밀번호입니다.</div>
@@ -251,7 +248,7 @@ $(document).ready(function(){
 		
 			<div class="col-md-6 mb-3">
 			<label for="user_birth">생년월일</label>
-			<input type="text" class="user_birth_input form-control" id="user_birth" name="user_birth">
+			<input type="date" class="user_birth_input form-control" id="user_birth" name="user_birth" value="1990-01-01">
 			<div class="input_check_birth invalid-feedback">생년월일을 선택해주세요.</div>
 			</div>
 		
@@ -264,19 +261,19 @@ $(document).ready(function(){
 		<div class="col-md-6 mb-3">
 		<input type="hidden" id="user_address" name="user_address" value="">
 		<label for="user_zipcode">우편번호</label>
-		<input type="text" id="user_zipcode" name="user_zipcode">
+		<input type="text" id="user_zipcode" name="user_zipcode" value="" disabled = "disabled">
 		<input type="button" value="우편번호 검색" id="btnZipcode">
 		<br>
-		<label for="user_address">집주소</label>
-		<input type="text" class="user_address_input form-control" id="user_address1" name="user_address1" placeholder="우편번호 검색으로 자동입력이 가능합니다.">
+		<label for="user_address1">집주소</label>
+		<input type="text" class="user_address_input form-control" id="user_address1" name="user_address1" placeholder="우편번호 검색으로 자동입력합니다." value="" disabled = "disabled">
 		<div class="input_check_address invalid-feedback">주소를 입력해주세요.</div>
 		<label for="user_address2">상세주소</label>
-		<input type="text" class="user_address2_input form-control" id="user_address2" name="user_address2" placeholder="건물명, 호수 등">
+		<input type="text" class="user_address2_input form-control" id="user_address2" name="user_address2" placeholder="건물명, 호수 등" value="">
 		</div>
 		
 		
 		<label for="user_tel">전화번호</label>
-		<input type="text" class="user_tel_input form-control" id="user_tel" name="user_tel" placeholder="하이픈(-)없이 입력해주세요.">
+		<input type="text" class="user_tel_input form-control" id="user_tel" name="user_tel" placeholder="하이픈(-) 포함 입력해주세요. ex) 010-1234-5678">
 		<div class="input_check_tel invalid-feedback">전화번호를 입력해주세요.</div>
 		
 		<input type="button" class="btn btn-primary" value="등록" id="submitBtn">
@@ -313,9 +310,8 @@ $('.user_pwd_input').on("propertychange change keyup paste input", function(){
 	$('.input_check_pwd').css('display', 'none');
 	
 	let inputPwd = user_pwd.value;
-	let reg = /[\W0-9a-zA-Z]+/; //특수문자를 찾는 정규표현식
 	
-	if(inputPwd.length < 8 || inputPwd.length > 16 || !reg.test(inputPwd)){
+	if(inputPwd.length < 8 || inputPwd.length > 16){
 		$('.pwd_input_valid').css('display', 'none');
 		$('.pwd_input_invalid').css('display', 'block');
 		pwdInputCheck = false;
@@ -329,8 +325,6 @@ $('.user_pwd_input').on("propertychange change keyup paste input", function(){
 /* 비밀번호 일치 확인 유효성 검사 처리 */
 $('.user_pwdck_input').on("propertychange change keyup paste input", function(){
 	
-	$('.user_pwd_input').on("propertychange change keyup paste input", function(){
-		
 		$('.input_check_pwdck').css('display', 'none');
 		
 		if(user_pwd.value != user_pwdck.value){
@@ -342,26 +336,67 @@ $('.user_pwdck_input').on("propertychange change keyup paste input", function(){
 			$('.pwdck_input_diff').css('display', 'none');
 			pwdSameCheck = true;
 		}
-	});
 	
 });
 
+/* 이메일 형식 검사 처리 */
+$('.user_email_input').on("propertychange change keyup paste input", function(){
+	
+	let inputEmail = user_email.value;
+	let reg = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+	
+	if(!reg.test(inputEmail)){
+		emailInputCheck = false;
+	}else{
+		emailInputCheck = true;
+	}
+});
+
+/* 전화번호 형식 검사 처리 */
+$('.user_tel_input').on("propertychange change keyup paste input", function(){
+	
+	let inputTel = user_tel.value;
+	let reg = /^\d{2,4}-\d{3,4}-\d{4}$/;
+	
+	if(!reg.test(inputTel)){
+		telInputCheck = false;
+	}else{
+		telInputCheck = true;
+	}
+});
 
 /* 우편번호 검색 처리 */
 var btnZipcode = document.getElementById('btnZipcode');
+var frm = document.frm_signup;
 if(btnZipcode != null){
 	btnZipcode.onclick = function(){
-		var frm = document.frm_signup;
 		new daum.Postcode({
 			oncomplete : function(data){
 				frm.user_zipcode.value = data.zonecode;
 				frm.user_address1.value = data.address;
+				frm.user_address.value = frm.user_zipcode.value + " " + frm.user_address1.value;
 			}
 		}).open();
 	}
 }
 
 
+
+/* 주소 병합 처리
+$('.user_address2_input').on("propertychange change keyup paste input", function(){
+	var frm = document.frm_signup;
+	var addr2 = frm.user_address2.value;
+	
+	if(user_address.value != null){
+		frm.user_address.value = frm.user_address.value + " " + addr2;
+	}else{
+		alert("우편번호와 주소를 입력해주세요.");
+	}
+	
+	addr2 = "";
+	
+	
+}); */
 
 </script>
 

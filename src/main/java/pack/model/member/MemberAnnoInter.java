@@ -24,8 +24,8 @@ public interface MemberAnnoInter {
 	public MemberDto findid(MemberBean bean);
 	
 	//회원가입
-	@Insert("INSERT INTO project_member VALUES(#{user_id},#{user_pwd},#{user_name},#{user_sex}"
-			+ ",#{user_birth},#{user_email},#{user_address},#{user_tel},0)")
+	@Insert("INSERT INTO project_member VALUES(user_no.NEXTVAL,#{user_id},#{user_pwd},#{user_name},#{user_sex}"
+			+ ",#{user_birth},#{user_email},#{user_address},#{user_tel},0,SYSDATE)")
 	public int insertData(MemberBean bean);
 	
 	//아이디 중복체크

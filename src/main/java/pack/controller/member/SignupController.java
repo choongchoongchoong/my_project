@@ -24,6 +24,7 @@ public class SignupController {
 	@RequestMapping(value = "insertMember", method = RequestMethod.POST)
 	public String submit(MemberBean bean, Model model) {
 		System.out.println(bean.getUser_id());
+		System.out.println(bean.getUser_name());
 		
 		boolean result = memberDaoInter.insertData(bean);
 		
