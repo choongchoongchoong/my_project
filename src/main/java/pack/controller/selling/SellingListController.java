@@ -1,20 +1,20 @@
-package pack.controller.board;
+package pack.controller.selling;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import pack.model.board.BoardDaoInter;
+import pack.model.selling.SellingDaoInter;
 
 @Controller
-public class ListController {
+public class SellingListController {
 	@Autowired
-	private BoardDaoInter boardDaoInter;
+	private SellingDaoInter sellingDaoInter;
 	
-	@RequestMapping("board/list")
+	@RequestMapping("selling/list")
 	public Model process(Model model) {
-		model.addAttribute("listdata", boardDaoInter.selectDataAll());
+		model.addAttribute("datalist", sellingDaoInter.selectDataAll());
 		
 		return model;
 	}

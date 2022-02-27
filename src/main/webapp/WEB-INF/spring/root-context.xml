@@ -36,5 +36,6 @@
 		<property name="mapperInterface" value="pack.model.selling.SellingAnnoInter"></property>
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
 	</bean>
+	
 		
 </beans>

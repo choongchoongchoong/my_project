@@ -43,17 +43,23 @@ input::-webkit-inner-spin-button {
 	<h3 class="mb-3">상품등록</h3>
 	<form action="sell" method="post" enctype="multipart/form-data">
 		<div class="col-md-6 mb-3">
+			<div id='image_preview'>
+			
+			<input type='file' id="file" name="file" multiple="multiple">
+			
+<!-- 			<label for="se_pic">상품사진</label>
+			<input type='file' id="se_pic" name="se_pic" multiple="multiple">
+			<div id='att_zone' data-placeholder='사진을 첨부 하려면 파일 선택 버튼을 클릭하거나 사진파일을 드래그 하세요'></div>
+			 -->
+			</div>
+		</div>
+		
+		
+<!-- 		<div class="col-md-6 mb-3">
 		<label for="se_title">상품명</label>
 		<input type="text" id="se_title" name="se_title">
 		</div>
 		
-		<div class="col-md-6 mb-3">
-			<div id='image_preview'>
-			<label for="se_pic">상품사진</label>
-			<input type='file' id="se_pic" name="se_pic" multiple="multiple">
-			<div id='att_zone' data-placeholder='사진을 첨부 하려면 파일 선택 버튼을 클릭하거나 사진파일을 드래그 하세요'></div>
-			</div>
-		</div>
 		
 		<div class="col-md-6 mb-3">
 			<label for="se_content">상품설명</label>
@@ -80,7 +86,7 @@ input::-webkit-inner-spin-button {
 		<div class="col-md-6 mb-3">
 			<label for="se_price">상품 가격</label>
 			<input type="number" id="se_price" name="se_price" min="0">
-		</div>
+		</div> -->
 	
 		<input type="submit" value="등록">
 		<button type="button" class="btn btn-primary" onclick="location.href='index.jsp'">돌아가기</button>

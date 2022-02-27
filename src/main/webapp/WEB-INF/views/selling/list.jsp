@@ -11,36 +11,8 @@
 <title>** 게시판 **</title>
 </head>
 <body>
-<div class="container">
-<h3>자유게시판</h3>
-<a href="insert">글쓰기</a>
-<table class="table table-stripted">
-	<tr>
-		<th>글번호</th>
-		<th>제목</th>
-		<th>글쓴이</th>
-		<th>등록일</th>
-		<th>조회수</th>
-	</tr>
-	<c:forEach var="list" items="${boardlist }">
-	<tr>
-		<td>${list.bd_no }</td>
-		<td>${list.bd_title }</td>
-		<td>${list.bd_id }</td>
-		<td>${list.bd_date }</td>
-		<td>${list.bd_readcnt }</td>
-	</tr>
-	</c:forEach>
-	<!-- 검색 -->
-	<tr>
-		<td colspan="5">
-			<form action="search" method="post">
-			검색 : <input type="text" name="searchValue">
-			<input type="submit" value="검색">
-			</form>
-		</td>
-	</tr>
-</table>
-</div>
+<c:forEach var="list" items="${datalist }">
+<img src="/home/resources/statics${list.filepath}">
+</c:forEach>
 </body>
 </html>

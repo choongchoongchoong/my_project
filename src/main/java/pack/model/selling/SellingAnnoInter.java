@@ -10,13 +10,17 @@ import org.apache.ibatis.annotations.Update;
 import pack.controller.selling.SellingBean;
 
 public interface SellingAnnoInter {
-	@Select("SELECT * FROM project_selling ORDER BY user_no ASC")
+	@Select("SELECT * FROM project_selling")
 	public List<SellingDto> selectDataAll();
 
+	@Insert("INSERT INTO project_selling VALUES(#{filename},#{filepath})")
+	public int insertData(SellingBean bean);
 	
+	/*
 	@Insert("INSERT INTO project_selling VALUES(#{se_no},#{user_no},#{se_title},#{se_content},#{se_pic},#{se_cat},"
 			+ "#{se_brand},#{se_state},#{se_price},SYSDATE)")
 	public int insertData(SellingBean bean);
+	*/
 	
 	/*
 	@Select("SELECT * FROM project_board WHERE bd_no=#{bd_no}")
