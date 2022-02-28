@@ -3,7 +3,7 @@ package pack.model.member;
 import pack.controller.member.MemberBean;
 
 public interface MemberDaoInter {
-	MemberDto login(MemberBean bean);  //로그인
+	MemberBean login(MemberBean bean);  //로그인
 	
 	MemberDto findid(MemberBean bean);  //아이디 찾기
 	

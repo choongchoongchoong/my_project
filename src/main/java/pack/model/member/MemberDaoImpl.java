@@ -34,7 +34,7 @@ public class MemberDaoImpl implements MemberDaoInter {
 	}
 
 	@Override
-	public MemberDto login(MemberBean bean) {  //로그인
+	public MemberBean login(MemberBean bean) {  //로그인
 		
 		return memberAnnoInter.login(bean);
 	}

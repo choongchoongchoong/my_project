@@ -27,13 +27,15 @@ public class LoginController {
 	public String login(MemberBean bean, HttpServletRequest req, Model model) throws Exception {
 
 		HttpSession session = req.getSession();
-		MemberDto memberDto = memberDaoInter.login(bean);
+		//MemberDto memberDto = memberDaoInter.login(bean);
+		MemberBean res = memberDaoInter.login(bean);
 
-		if(memberDto != null) {
-			model.addAttribute("msg", memberDto.getUser_name()+"님 환영합니다.");
+		if(res != null) {
+			model.addAttribute("msg", res.getUser_name()+"님 환영합니다.");
 			model.addAttribute("url","/");
 			
-			session.setAttribute("loginSession", memberDto);
+			session.setAttribute("loginSession", res);
+			System.out.println("로그인된 회원번호는!!!!!!" + res.getUser_no());
 			
 			return "redirect";
 			

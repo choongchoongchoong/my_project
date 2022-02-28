@@ -25,8 +25,11 @@
 
 <a href="board/list">커뮤니티</a>
 <a href="selling">상품등록</a>
-<a href="test">상품등록 테스트</a>
-<a href="selling/list">사진</a>
+<a href="selling/list">판매목록</a>
+
+
+
+
 
 
 </body>

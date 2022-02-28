@@ -13,12 +13,18 @@ public interface SellingAnnoInter {
 	@Select("SELECT * FROM project_selling")
 	public List<SellingDto> selectDataAll();
 
-	@Insert("INSERT INTO project_selling VALUES(#{filename},#{filepath})")
+	/*
+	@Insert("INSERT INTO project_selling(se_title,se_content,se_cat,se_state,se_price,se_regdate,filename,filepath) "
+			+ "VALUES(#{se_title},#{se_content},#{se_cat},#{se_state},#{se_price},SYSDATE,#{filename},#{filepath})")
+	public int insertData(SellingBean bean);
+	*/
+	
+	@Insert("INSERT INTO project_selling VALUES(se_no.NEXTVAL,#{user_no},#{se_title},#{se_content},#{se_cat},#{se_state},#{se_price},SYSDATE,#{filename},#{filepath})")
 	public int insertData(SellingBean bean);
 	
 	/*
 	@Insert("INSERT INTO project_selling VALUES(#{se_no},#{user_no},#{se_title},#{se_content},#{se_pic},#{se_cat},"
-			+ "#{se_brand},#{se_state},#{se_price},SYSDATE)")
+			+ #{se_state},#{se_price},SYSDATE)")
 	public int insertData(SellingBean bean);
 	*/
 	
