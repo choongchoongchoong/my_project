@@ -33,7 +33,8 @@ public class SellingInsertController {
 			MultipartFile se_pic, HttpServletRequest req, MemberDto memberDto) throws Exception {
 		
 		//저장 경로 지정
-		String projectPath = "C:\\Users\\dynabook\\git\\my_project\\src\\main\\webapp\\resources\\statics\\images";
+		//String projectPath = "C:\\Users\\dynabook\\git\\my_project\\src\\main\\webapp\\resources\\statics\\images";
+		String projectPath = "C:\\Users\\dynabook\\Pictures\\Saved Pictures";
 		//랜덤 파일명 생성
 		UUID uuid = UUID.randomUUID();
 		//파일 이름 = 랜덤 파일명 + 첨부파일명
@@ -45,7 +46,7 @@ public class SellingInsertController {
 		
 		//파일명, 파일경로 저장
 		bean.setFilename(fileName);
-		bean.setFilepath("/images/" + fileName);
+		bean.setFilepath("/" + fileName);
 		System.out.println(bean.getFilename());
 		System.out.println(bean.getFilepath());
 		

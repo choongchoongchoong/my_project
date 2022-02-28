@@ -12,7 +12,11 @@ import pack.controller.selling.SellingBean;
 
 public interface SellingAnnoInter {
 	//메인화면 표시용
-	@Select("SELECT * FROM (SELECT * FROM project_selling order by dbms_random.value) WHERE rownum <=9")
+	@Select("SELECT * FROM ("
+			+ "SELECT a.se_no,a.user_no,a.se_title,a.se_content,a.se_cat,a.se_state,a.se_price,a.se_regdate,a.filename,a.filepath,b.user_id "
+			+ "FROM project_selling a LEFT JOIN project_member b ON a.user_no = b.user_no "
+			+ "ORDER BY dbms_random.value"
+			+ ") WHERE rownum <=9")
 	public List<SellingDto> selectDataAll();
 	
 	//나의 판매목록 표시용

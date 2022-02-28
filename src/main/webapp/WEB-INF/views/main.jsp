@@ -229,12 +229,14 @@ input[type=search] {
 			<a href="#" class="inner">
 				<div class="li-img">
 					<span class="thumb">
-						<img src="/home/resources/statics${list.filepath}" alt="${list.filename}">
+						<!-- <img src="/home/resources/statics${list.filepath}" alt="${list.filename}">  -->
+						<img src="/upload${list.filepath}" alt="${list.filename}">
 					</span>
 				</div>
 				<div class="li-text">
 					<h4 class="li-head">${list.se_title}</h4>
-					<p class="li-etc"><fmt:formatNumber value="${list.se_price}" pattern="#,###"/>원</p>
+					<p class="li-etc"><fmt:formatNumber value="${list.se_price}" pattern="#,###"/>원<br>
+					작성자 : ${list.user_id}</p>
 				</div>
 			</a>
 		</li>

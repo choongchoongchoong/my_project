@@ -207,15 +207,16 @@ input[type=search] {
 </head>
 <body>
 <div class="wrap">
-	<h1>판매 목록</h1>
 	<div id="pattern" class="pattern">
 		<ul class="list img-list">
+		<h3>나의 판매 상품 목록</h3>
+			<c:if test="${empty datalist }"><p>등록된 상품이 없습니다.</p></c:if>
 			<c:forEach var="list" items="${datalist }">
 			<li>
 				<a href="#" class="inner">
 					<div class="li-img">
 						<span class="thumb">
-							<img src="/home/resources/statics${list.filepath}" alt="${list.filename}">
+							<img src="/upload${list.filepath}" alt="${list.filename}">
 						</span>
 					</div>
 					<div class="li-text">

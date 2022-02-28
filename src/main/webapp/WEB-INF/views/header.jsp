@@ -13,7 +13,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 	<div class="container-fluid">
 		<a class="navbar-brand" href="${pageContext.request.contextPath}/main">
-			<img src="${pageContext.request.contextPath}/resources/statics/imgsource/greenstorelogo.png" alt="logo" width="70" height="35">
+			<img src="${pageContext.request.contextPath}/resources/statics/images/greenstorelogo.png" alt="logo" width="70" height="35">
 		</a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
