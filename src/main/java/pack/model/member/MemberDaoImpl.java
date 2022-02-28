@@ -57,6 +57,12 @@ public class MemberDaoImpl implements MemberDaoInter {
 		return memberAnnoInter.findid(bean);
 	}
 
+	@Override
+	public MemberDto findpwd(MemberBean bean) {  //비밀번호 찾기
+		
+		return memberAnnoInter.findpwd(bean);
+	}
+
 
 
 	

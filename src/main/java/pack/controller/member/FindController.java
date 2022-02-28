@@ -28,13 +28,14 @@ public class FindController {
 	private JavaMailSender mailSender;
 	*/
 	
-	//아이디 찾기
+	//아이디/비밀번호 찾기
 	@RequestMapping(value = "findid", method = RequestMethod.GET)
 	public String findid() {
 		
 		return "member/findidform";
 	}
 	
+	//아이디 찾기
 	@RequestMapping(value = "findid", method = RequestMethod.POST)
 	public ModelAndView findid(MemberBean bean) {
 		
@@ -51,13 +52,35 @@ public class FindController {
 		
 		return mav;
 	}
-	
-	
+
 	//비밀번호 찾기
-	@RequestMapping(value = "findpwd", method = RequestMethod.GET)
-	public String findpwd() {
+	@RequestMapping(value = "findpwd", method = RequestMethod.POST)
+	public ModelAndView find_pwd(MemberBean bean, HttpServletRequest request, HttpSession session, 
+			HttpServletResponse response_email) {
 		
-		return "member/findpwdform";
+		String email = (String) request.getParameter("user_email");
+		//String id = (String) request.getParameter("user_id");
+		
+		String id = memberDaoInter.findpwd(bean).getUser_pwd();
+		
+		if(bean != null) {
+			Random r = new Random();
+			int num = r.nextInt(999999);  //랜덤난수설정
+			
+			if(bean.getUser_id().equals(id)) {
+				session.setAttribute("user_email", bean.getUser_email());
+				String setfrom = "acorn3test@gmail.com";
+				String tomail = email;  //받는사람
+				String title = "비밀번호 변경 인증 이메일 입니다";
+				String content = System.getProperty("line.separator") + "안녕하세요 회원님"
+						+ System.getProperty("line.separator") + "비밀번호찾기(변경) 인증번호는 " + num + " 입니다."
+						+ System.getProperty("line.separator");
+			}
+		}
+		
+		
+				return null;
+		
 	}
 	
 	

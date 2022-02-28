@@ -10,7 +10,7 @@ import org.apache.ibatis.annotations.Update;
 import pack.controller.selling.SellingBean;
 
 public interface SellingAnnoInter {
-	@Select("SELECT * FROM project_selling")
+	@Select("SELECT * FROM project_selling ORDER BY se_no ASC")
 	public List<SellingDto> selectDataAll();
 
 	/*

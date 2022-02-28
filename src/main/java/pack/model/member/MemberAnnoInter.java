@@ -22,6 +22,10 @@ public interface MemberAnnoInter {
 	//아이디 찾기
 	@Select("SELECT user_id FROM project_member WHERE user_name=#{user_name} and user_email=#{user_email}")
 	public MemberDto findid(MemberBean bean);
+
+	//비밀번호 찾기
+	@Select("SELECT * FROM project_member WHERE user_id=#{user_id} and user_email=#{user_email}")
+	public MemberDto findpwd(MemberBean bean);
 	
 	//회원가입
 	@Insert("INSERT INTO project_member VALUES(user_no.NEXTVAL,#{user_id},#{user_pwd},#{user_name},#{user_sex}"
