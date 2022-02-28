@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import pack.model.member.MemberDaoInter;
-import pack.model.member.MemberDto;
 
 @Controller
 public class LoginController {

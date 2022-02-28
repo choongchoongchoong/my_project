@@ -7,11 +7,17 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import pack.controller.member.MemberBean;
 import pack.controller.selling.SellingBean;
 
 public interface SellingAnnoInter {
-	@Select("SELECT * FROM project_selling ORDER BY se_no ASC")
+	//메인화면 표시용
+	@Select("SELECT * FROM (SELECT * FROM project_selling order by dbms_random.value) WHERE rownum <=9")
 	public List<SellingDto> selectDataAll();
+	
+	//나의 판매목록 표시용
+	@Select("SELECT * FROM project_selling WHERE user_no=#{user_no} ORDER BY se_no ASC")
+	public List<SellingDto> selectDataMine(int user_no);
 
 	/*
 	@Insert("INSERT INTO project_selling(se_title,se_content,se_cat,se_state,se_price,se_regdate,filename,filepath) "

@@ -13,13 +13,19 @@ public class SellingDaoImpl implements SellingDaoInter{
 	public SellingAnnoInter sellingAnnoInter;  //SQL문이 담긴 어노테이션 관리 인터페이스
 
 	@Override
-	public List<SellingDto> selectDataAll() {
+	public List<SellingDto> selectDataAll() {  //전체 판매 목록 불러오기
 		
 		return sellingAnnoInter.selectDataAll();
 	}
 
 	@Override
-	public boolean insertData(SellingBean bean) {
+	public List<SellingDto> selectDataMine(int user_no) {  //나의 판매목록 불러오기
+		
+		return sellingAnnoInter.selectDataMine(user_no);
+	}
+	
+	@Override
+	public boolean insertData(SellingBean bean) {  //판매 등록
 		int re = sellingAnnoInter.insertData(bean);
 		
 		if(re > 0) 
@@ -27,6 +33,5 @@ public class SellingDaoImpl implements SellingDaoInter{
 		else
 			return false;
 	}
-
 
 }

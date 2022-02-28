@@ -6,6 +6,8 @@ import pack.controller.selling.SellingBean;
 
 public interface SellingDaoInter {
 	List<SellingDto> selectDataAll();  //전체 판매 목록 불러오기
+	List<SellingDto> selectDataMine(int user_no);  //나의 판매목록 불러오기
+	
 	boolean insertData(SellingBean bean);  //판매 등록
 	
 	/*
