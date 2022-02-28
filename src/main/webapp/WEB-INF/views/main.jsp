@@ -7,10 +7,10 @@
 <html>
 <head>
 <!-- bootstrap -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <meta charset="UTF-8">
-<title>** 판매 목록 **</title>
+<title>** 메인 페이지 **</title>
 <style type="text/css">
 /************Reset**************/
 * { 
@@ -137,16 +137,22 @@ input[type=search] {
   100% { background: #fff; }
 }
 
+
+.list li {
+  border-bottom: 1px solid #ccc;
+  display: table;
+  border-collapse: collapse;
+  width: 100%;
+}
 .inner {
   display: table-row;
   overflow: hidden;
 }
-
 .thumb { 
 	display: block;
 	overflow: hidden;
-	height: 150px;
-	width: 150px;
+	height: 300px;
+	width: 300px;
 }
 
 .thumb img {
@@ -155,79 +161,102 @@ input[type=search] {
 	min-height: 100%; /* Scale up to fill container height */
 	-ms-interpolation-mode: bicubic; /* Scaled images look a bit better in IE now */
 }
-
 .li-img {
   display: table-cell;
   vertical-align: middle;
   width: 20%;
   padding-right: 1em;
 }
-
 .li-img img {
   display: block;
   width: 100%;
   height: auto;
 }
-
 .li-text {
   display: table-cell;
   vertical-align: middle;
-  width: 70%;
-  padding-right: 1em;
+  width: 60%;
 }
-
 .li-head {
   margin: 0;
 }
-
-.li-etc {
+.li-sub {
   margin: 0;
 }
 
-@media screen and (min-width: 40em) {
-  .list li {
-    background: none;
+@media all and (min-width: 40em) {
+  .list {
+    padding: 0.5em;
+    max-width: 70em;
+    margin: 0 auto;
+    overflow: hidden;
   }
-  .li-summary {
+  .list li {
+    padding: 0.5em;
     display: block;
-  }
-}
-
-@media screen and (min-width: 60em) {
-  .list li {
-    float: left;
     width: 50%;
+    float: left;
+    background: none;
+    border: 0;
   }
   .inner {
-    padding-right: 1em;
+    display: block;
+  }
+  .li-img, .li-text, .inner {
+    display: block;
+    width: auto;
+    padding: 0;
+  }
+  .li-text {
+    padding: 0.5em 0;
   }
 }
 
+@media all and (min-width: 60em) {
+  .list li {
+    width: 33.33333333%;
+  }
+}
 </style>
 </head>
 <body>
-<div class="wrap">
-	<h1>판매 목록</h1>
-	<div id="pattern" class="pattern">
-		<ul class="list img-list">
-			<c:forEach var="list" items="${datalist }">
-			<li>
-				<a href="#" class="inner">
-					<div class="li-img">
-						<span class="thumb">
-							<img src="/home/resources/statics${list.filepath}" alt="${list.filename}">
-						</span>
-					</div>
-					<div class="li-text">
-						<h4 class="li-head">${list.se_title}</h4>
-						<p class="li-etc"><fmt:formatNumber value="${list.se_price}" pattern="#,###"/>원</p>
-						<p class="li-etc">${list.se_regdate.substring(0,10)}</p>
-					</div>
-				</a>
-			</li>
-			</c:forEach>
-		</ul>
-	</div>
+메인 페이지<p/>
+
+<c:choose>
+	<c:when test="${loginSession == null }">
+		<a href="login">로그인</a>
+	</c:when>
+	<c:otherwise>
+		<a href="logout">로그아웃</a>
+		<a href="mypage">마이 페이지</a>
+	</c:otherwise>
+</c:choose>
+
+<a href="board/list">커뮤니티</a>
+<a href="selling">상품등록</a>
+<a href="selling/list">판매목록</a>
+
+
+
+<div id="pattern" class="pattern">
+	<ul class="list img-list">
+	<h3>오늘의 추천상품</h3>
+		<c:forEach var="list" items="${datalist }">
+		<li>
+			<a href="#" class="inner">
+				<div class="li-img">
+					<span class="thumb">
+						<img src="/home/resources/statics${list.filepath}" alt="${list.filename}">
+					</span>
+				</div>
+				<div class="li-text">
+					<h4 class="li-head">${list.se_title}</h4>
+					<p class="li-etc"><fmt:formatNumber value="${list.se_price}" pattern="#,###"/>원</p>
+				</div>
+			</a>
+		</li>
+		</c:forEach>
+	</ul>
 </div>
 </body>
 </html>
