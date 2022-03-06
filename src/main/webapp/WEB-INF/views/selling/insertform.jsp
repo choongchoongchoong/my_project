@@ -79,14 +79,17 @@ input::-webkit-inner-spin-button {
 				<label for="se_cat">카테고리</label>
 				<select class="form-control" id="se_cat" name="se_cat">
 					<option value="">선택</option>
-					<option value="wclothes">여성의류</option>
-					<option value="mclothes">남성의류</option>
-					<option value="beauty">뷰티/미용</option>
-					<option value="electric">전자기기</option>
-					<option value="furniture">가구/인테리어</option>
-					<option value="stuff">생활잡화</option>
-					<option value="book">책/음반</option>
-					<option value="etc">기타</option>
+					<option value="여성패션">여성패션</option>
+					<option value="여성패션">남성패션</option>
+					<option value="뷰티/미용">뷰티/미용</option>
+					<option value="디지털기기/가전">전자기기/가전</option>
+					<option value="가구/인테리어">가구/인테리어</option>
+					<option value="생활잡화">생활잡화</option>
+					<option value="취미">취미</option>
+					<option value="식품">식품</option>
+					<option value="유아동용품">유아동용품</option>
+					<option value="반려동물용품">반려동물용품</option>
+					<option value="기타">기타</option>
 				</select>
 			</div>
 			
@@ -94,12 +97,12 @@ input::-webkit-inner-spin-button {
 				<label for="se_state">상품상태</label>
 				<select class="form-control" id="se_state" name="se_state">
 					<option value="">선택</option>
-					<option value="s">새상품/미개봉</option>
-					<option value="a">새상품에 가까움</option>
-					<option value="b">눈에 띄는 오염 없음</option>
-					<option value="c">약간의 사용감 있음</option>
-					<option value="d">오염 있음</option>
-					<option value="f">상태 나쁨</option>
+					<option value="새상품/미개봉">새상품/미개봉</option>
+					<option value="새상품에 가까움">새상품에 가까움</option>
+					<option value="눈에 띄는 오염 없음">눈에 띄는 오염 없음</option>
+					<option value="약간의 사용감 있음">약간의 사용감 있음</option>
+					<option value="오염 있음">오염 있음</option>
+					<option value="상태 나쁨">상태 나쁨</option>
 				</select>
 			</div>
 			

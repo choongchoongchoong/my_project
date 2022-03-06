@@ -12,6 +12,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <meta charset="UTF-8">
 <title>** 메인 페이지 **</title>
+
 <style type="text/css">
 /************Reset**************/
 * { 
@@ -226,7 +227,7 @@ input[type=search] {
 	<h3>오늘의 추천상품</h3>
 		<c:forEach var="list" items="${datalist }">
 		<li>
-			<a href="#" class="inner">
+			<a href="selling/detail?se_no=${list.se_no }" class="inner">
 				<div class="li-img">
 					<span class="thumb">
 						<!-- <img src="/home/resources/statics${list.filepath}" alt="${list.filename}">  -->
@@ -235,8 +236,7 @@ input[type=search] {
 				</div>
 				<div class="li-text">
 					<h4 class="li-head">${list.se_title}</h4>
-					<p class="li-etc"><fmt:formatNumber value="${list.se_price}" pattern="#,###"/>원<br>
-					작성자 : ${list.user_id}</p>
+					<p class="li-etc"><fmt:formatNumber value="${list.se_price}" pattern="#,###"/>원</p>
 				</div>
 			</a>
 		</li>

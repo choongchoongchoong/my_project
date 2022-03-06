@@ -10,6 +10,29 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 
+<!-- 폰트 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500&display=swap" rel="stylesheet">
+<style>
+	*{
+		font-family: 'Noto Sans KR', sans-serif;
+	}
+</style>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#sellingBtn").on("click", function() {
+			if(${loginSession != null}){
+				location.href = "${pageContext.request.contextPath}/selling";
+			}else{
+				alert("로그인 해주세요.");
+				location.href = "${pageContext.request.contextPath}/login";
+			}
+		})
+	})
+</script>
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 	<div class="container-fluid">
 		<a class="navbar-brand" href="${pageContext.request.contextPath}/main">
@@ -18,20 +41,22 @@
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 	    </button>
-		<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+		<div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo01">
+			<ul class="navbar-nav mb-2 mb-lg-0">
 					<c:choose>
 						<c:when test="${loginSession == null }">
+							<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/board/list">공지사항</a></li>
 							<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/login">로그인</a></li>
+							<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/signup">회원가입</a></li>
 						</c:when>
 					<c:otherwise>
+						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/board/list">공지사항</a></li>
 						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/logout">로그아웃</a></li>
-						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/mypage">마이 페이지</a></li>
-						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/selling">상품등록</a></li>
+						<!-- <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/mypage">마이 페이지</a></li> -->
 						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/selling/list">나의 판매목록</a></li>
 					</c:otherwise>
 					</c:choose>
-					<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/board/list">게시판</a></li>
+					<li class="nav-item"><button type="button" class="btn btn-success ml-5" id="sellingBtn">상품등록</button></li>
 			</ul>
 		</div>
 	</div>

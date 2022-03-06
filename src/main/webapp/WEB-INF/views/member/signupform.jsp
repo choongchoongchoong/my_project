@@ -13,6 +13,30 @@
 <meta charset="UTF-8">
 <title>** 회원가입 페이지 **</title>
 <style>
+	html,
+	body {
+	  height: 100%;
+	}
+	
+	body {
+	  display: flex;
+	  align-items: center;
+	  padding-top: 40px;
+	  padding-bottom: 40px;
+	  background-color: #f5f5f5;
+	}
+	
+	.form-signup {
+	  width: 100%;
+	  max-width: 1000px;
+	  padding: 15px;
+	  margin: auto;
+	}
+	
+	.form-signup .form-floating:focus-within {
+	  z-index: 2;
+	}
+
 /* 필드 입력 유효성 검사 */
 .input_check_id{
 	display: none;
@@ -198,89 +222,96 @@ function fn_checkid(){
 	});
 };
 
-
-
 </script>
 </head>
 <body>
-	<div class="container">
-		<h4 class="mb-3">회원가입</h4>
-		<form method="post" name="frm_signup" id="signup_form">
-			<div class="col-md-6 mb-3">
-			  <label for="user_id">아이디</label>
-			  <div>알파벳 소문자와 숫자로만 구성된 5~10자리 아이디를 입력해주세요.<br>
-			  (첫글자는 알파벳이어야 합니다.)</div>
-			  <input type="text" class="user_id_input form-control" id="user_id" name="user_id">
-			  <button type="button" id="idChk" onclick="fn_checkid();" value="N">중복확인</button>
-			  <div class="input_check_id invalid-feedback">아이디를 입력해주세요.</div>
-			<div class="id_input_valid valid-feedback">사용 가능한 아이디입니다.</div>
-			<div class="id_input_invalid invalid-feedback">사용 불가능한 아이디입니다.</div>
-			</div>
+	<main class="form-signup">
+		<div class="container">
+			<h1 class="h3 mb-3 fw-normal">회원가입</h1>
+			<form method="post" name="frm_signup" id="signup_form">
+				<div class="form-floating mb-3">
+					<input type="text" class="user_id_input form-control" id="user_id" name="user_id" placeholder="영문/숫자로 구성된 5~10자리 아이디를 입력해주세요.">
+					<label for="user_id">아이디</label>
+					<p>영문/숫자로 구성된 5~10자리 아이디를 입력해주세요.</p>
+					<div class="input_check_id invalid-feedback">아이디를 입력해주세요.</div>
+					<div class="id_input_valid valid-feedback">사용 가능한 아이디입니다.</div>
+					<div class="id_input_invalid invalid-feedback">사용 불가능한 아이디입니다.</div>
+					<button type="button" class="w-100 mb-3 btn btn-warning" id="idChk" onclick="fn_checkid();" value="N">중복확인</button>
+				</div>
+				
+				<div class="form-floating">
+					<input type="password" class="user_pwd_input form-control" id="user_pwd" name="user_pwd" placeholder="8~16자리 비밀번호를 입력해주세요.">
+					<label for="user_pwd">비밀번호</label>
+					<p>8~16자리 비밀번호를 입력해주세요.</p>
+					<div class="input_check_pwd invalid-feedback">비밀번호를 입력해주세요.</div>
+					<div class="pwd_input_valid valid-feedback">사용 가능한 비밀번호입니다.</div>
+					<div class="pwd_input_invalid invalid-feedback">사용 불가능한 비밀번호입니다.</div>
+				</div>
 			
-			<div class="col-md-6 mb-3">
-			<label for="user_pwd">비밀번호</label>
-			<div>8~16자리 비밀번호를 입력해주세요.</div>
-			<input type="password" class="user_pwd_input form-control" id="user_pwd" name="user_pwd">
-			<div class="input_check_pwd invalid-feedback">비밀번호를 입력해주세요.</div>
-			<div class="pwd_input_valid valid-feedback">사용 가능한 비밀번호입니다.</div>
-			<div class="pwd_input_invalid invalid-feedback">사용 불가능한 비밀번호입니다.</div>
-			</div>
-		
-			<div class="col-md-6 mb-3">
-			<label for="user_pwdck">비밀번호 확인</label>
-			<input type="password" class="user_pwdck_input form-control" id="user_pwdck" name="user_pwdck">
-			<div class="input_check_pwdck invalid-feedback">비밀번호를 한 번 더 입력해주세요.</div>
-			<div class="pwdck_input_same valid-feedback">비밀번호가 일치합니다.</div>
-			<div class="pwdck_input_diff invalid-feedback">비밀번호가 일치하지 않습니다.</div>
-			</div>
-		
-			<div class="col-md-6 mb-3">
-			<label for="user_name">성명</label>
-			<input type="text" class="user_name_input form-control" id="user_name" name="user_name" placeholder="">
-			<div class="input_check_name invalid-feedback">성명을 입력해주세요.</div>
-			</div>
-		
-			<div class="col-md-8 mb-3">
-			<label for="user_sex">성별</label>
-			<label><input type="radio" name="user_sex" value="male" checked="checked">남성</label>
-			<label><input type="radio" name="user_sex" value="female">여성</label>
-			</div>
-		
-			<div class="col-md-6 mb-3">
-			<label for="user_birth">생년월일</label>
-			<input type="date" class="user_birth_input form-control" id="user_birth" name="user_birth" value="1990-01-01">
-			<div class="input_check_birth invalid-feedback">생년월일을 선택해주세요.</div>
-			</div>
-		
-		<div class="col-md-6 mb-3">
-		<label for="user_email">이메일</label>
-		<input type="text" class="user_email_input form-control" id="user_email" name="user_email" placeholder="id@email.com">
-		<div class="input_check_email invalid-feedback">이메일을 입력해주세요.</div>
+				<div class="form-floating">
+					<input type="password" class="user_pwdck_input form-control" id="user_pwdck" name="user_pwdck" placeholder="비밀번호를 한 번 더 입력해주세요.">
+					<label for="user_pwdck">비밀번호 확인</label>
+					<p></p>
+					<div class="input_check_pwdck invalid-feedback">비밀번호를 한 번 더 입력해주세요.</div>
+					<div class="pwdck_input_same valid-feedback">비밀번호가 일치합니다.</div>
+					<div class="pwdck_input_diff invalid-feedback">비밀번호가 일치하지 않습니다.</div>
+				</div>
+			
+				<div class="form-floating">
+					<input type="text" class="user_name_input form-control" id="user_name" name="user_name" placeholder="성명을 입력해주세요.">
+					<label for="user_name">성명</label>
+					<p></p>
+					<div class="input_check_name invalid-feedback">성명을 입력해주세요.</div>
+				</div>
+			
+				<label for="user_sex">성별</label>
+				<div class="form-check">
+					<input type="radio" id="male" name="user_sex" value="male" checked="checked">
+					<label class="form-check-label" for="male">남자</label>
+					<input type="radio" id="female" name="user_sex" value="female">
+					<label class="form-check-label" for="female">여성</label>
+					<p></p>
+				</div>
+			
+				<div class="form-floating">
+					<input type="date" class="user_birth_input form-control" id="user_birth" name="user_birth" value="1990-01-01">
+					<label for="user_birth">생년월일</label>
+					<p></p>
+					<div class="input_check_birth invalid-feedback">생년월일을 선택해주세요.</div>
+				</div>
+			
+				<div class="form-floating">
+					<input type="text" class="user_email_input form-control" id="user_email" name="user_email" placeholder="id@email.com">
+					<label for="user_email">이메일</label>
+					<p></p>
+					<div class="input_check_email invalid-feedback">이메일을 입력해주세요.</div>
+				</div>
+			
+				<div class="col-md-6 mb-3">
+					<input type="hidden" id="user_address" name="user_address" value="">
+					<label for="user_zipcode">우편번호</label>
+					<input type="text" id="user_zipcode" name="user_zipcode" value="" disabled = "disabled">
+					<input type="button" value="우편번호 검색" id="btnZipcode">
+					<br>
+					<label for="user_address1">집주소</label>
+					<input type="text" class="user_address_input form-control" id="user_address1" name="user_address1" placeholder="우편번호 검색으로 자동입력합니다." value="" disabled = "disabled">
+					<div class="input_check_address invalid-feedback">주소를 입력해주세요.</div>
+					<label for="user_address2">상세주소</label>
+					<input type="text" class="user_address2_input form-control" id="user_address2" name="user_address2" placeholder="건물명, 호수 등" value="">
+				</div>
+				
+				<div class="form-floating">
+					<input type="text" class="user_tel_input form-control" id="user_tel" name="user_tel" placeholder="하이픈(-) 포함 입력해주세요. ex) 010-1234-5678">
+					<label for="user_tel">전화번호</label>
+					<p>하이픈(-) 포함 입력해주세요. ex) 010-1234-5678</p>
+					<div class="input_check_tel invalid-feedback">전화번호를 입력해주세요.</div>
+				</div>
+			
+				<input type="button" class="w-100 mb-3 btn btn-primary" value="등록" id="submitBtn">
+				<button type="button" class="w-100 mb-3 btn btn-secondary" onclick="location.href='index.jsp'">돌아가기</button>
+			</form>
 		</div>
-		
-		<div class="col-md-6 mb-3">
-		<input type="hidden" id="user_address" name="user_address" value="">
-		<label for="user_zipcode">우편번호</label>
-		<input type="text" id="user_zipcode" name="user_zipcode" value="" disabled = "disabled">
-		<input type="button" value="우편번호 검색" id="btnZipcode">
-		<br>
-		<label for="user_address1">집주소</label>
-		<input type="text" class="user_address_input form-control" id="user_address1" name="user_address1" placeholder="우편번호 검색으로 자동입력합니다." value="" disabled = "disabled">
-		<div class="input_check_address invalid-feedback">주소를 입력해주세요.</div>
-		<label for="user_address2">상세주소</label>
-		<input type="text" class="user_address2_input form-control" id="user_address2" name="user_address2" placeholder="건물명, 호수 등" value="">
-		</div>
-		
-		
-		<label for="user_tel">전화번호</label>
-		<input type="text" class="user_tel_input form-control" id="user_tel" name="user_tel" placeholder="하이픈(-) 포함 입력해주세요. ex) 010-1234-5678">
-		<div class="input_check_tel invalid-feedback">전화번호를 입력해주세요.</div>
-		
-		<input type="button" class="btn btn-primary" value="등록" id="submitBtn">
-		<button type="button" class="btn btn-primary" onclick="location.href='login'">돌아가기</button>
-		</form>
-	</div>
-	
+	</main>
 	
 <script>
 /* 아이디 입력값 유효성 검사 처리 */
@@ -379,26 +410,6 @@ if(btnZipcode != null){
 		}).open();
 	}
 }
-
-
-
-/* 주소 병합 처리
-$('.user_address2_input').on("propertychange change keyup paste input", function(){
-	var frm = document.frm_signup;
-	var addr2 = frm.user_address2.value;
-	
-	if(user_address.value != null){
-		frm.user_address.value = frm.user_address.value + " " + addr2;
-	}else{
-		alert("우편번호와 주소를 입력해주세요.");
-	}
-	
-	addr2 = "";
-	
-	
-}); */
-
 </script>
-
 </body>
 </html>

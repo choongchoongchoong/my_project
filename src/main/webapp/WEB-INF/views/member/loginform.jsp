@@ -71,11 +71,11 @@
 		<h1 class="h3 mb-3 fw-normal">로그인</h1>
 		<form action="login" method="post">
 			<div class="form-floating">
-				<input type="text" class="form-control" id="user_id" name="user_id">
+				<input type="text" class="form-control" id="user_id" name="user_id" placeholder="아이디">
 				<label for="user_id">아이디</label>
 			</div>
 			<div class="form-floating">
-				<input type="password" class="form-control" id="user_pwd" name="user_pwd">
+				<input type="password" class="form-control" id="user_pwd" name="user_pwd" placeholder="패스워드">
 				<label class="form-label" for="user_pwd">비밀번호</label>
 			</div>
 			

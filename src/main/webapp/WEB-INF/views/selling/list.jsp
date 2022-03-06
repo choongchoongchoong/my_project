@@ -213,7 +213,7 @@ input[type=search] {
 			<c:if test="${empty datalist }"><p>등록된 상품이 없습니다.</p></c:if>
 			<c:forEach var="list" items="${datalist }">
 			<li>
-				<a href="#" class="inner">
+				<a href="detail?se_no=${list.se_no }" class="inner">
 					<div class="li-img">
 						<span class="thumb">
 							<img src="/upload${list.filepath}" alt="${list.filename}">

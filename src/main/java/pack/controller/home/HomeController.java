@@ -14,6 +14,7 @@ public class HomeController {
 
 	@RequestMapping("main")
 	public Model home(Model model) {
+		
 		model.addAttribute("datalist", sellingDaoInter.selectDataAll());
 		
 		return model;

@@ -25,13 +25,31 @@ public class SellingDaoImpl implements SellingDaoInter{
 	}
 	
 	@Override
-	public boolean insertData(SellingBean bean) {  //판매 등록
-		int re = sellingAnnoInter.insertData(bean);
+	public SellingDto selectDataOne(int se_no) {  //상품내용 상세보기
+
+		return sellingAnnoInter.selectDataOne(se_no);
+	}
+	
+	@Override
+	public boolean updateReadcnt(int se_no) {  //조회수 처리
+		int result = sellingAnnoInter.updateReadcnt(se_no);
 		
-		if(re > 0) 
+		if(result > 0)
 			return true;
 		else
 			return false;
 	}
+	
+	@Override
+	public boolean insertData(SellingBean bean) {  //판매 등록
+		int result = sellingAnnoInter.insertData(bean);
+		
+		if(result > 0) 
+			return true;
+		else
+			return false;
+	}
+
+
 
 }
