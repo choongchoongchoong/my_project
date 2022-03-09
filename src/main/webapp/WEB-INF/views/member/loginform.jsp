@@ -64,6 +64,13 @@
 	})
 </script>
 
+<script>
+var preUrl = document.referrer;
+/* var splitedUrl = preUrl.split('/'); */
+var splitedUrl = preUrl.substring(26);
+console.log(splitedUrl);
+</script>
+
 </head>
 
 <body class="text-center">
@@ -78,12 +85,13 @@
 				<input type="password" class="form-control" id="user_pwd" name="user_pwd" placeholder="패스워드">
 				<label class="form-label" for="user_pwd">비밀번호</label>
 			</div>
-			
-			<button type="submit" class="w-100 mb-3 btn btn-outline-primary">로그인</button>
-			<button type="button" class="w-100 btn btn-outline-primary" id="registerBtn">회원가입</button>
+			<input type="hidden" id="pre_url" name="pre_url" value="">
+			<script>$("#pre_url").attr("value", splitedUrl);</script>
+			<button type="submit" class="w-100 mb-3 btn btn-primary">로그인</button>
+			<button type="button" class="w-100 btn btn-primary" id="registerBtn">회원가입</button>
 			<hr>
-			<button type="button" class="btn btn-outline-warning" id="findBtn">아이디/비밀번호 찾기</button>
-			<button type="button" class="btn btn-outline-secondary" onclick="location.href='index.jsp'">메인 페이지로</button>
+			<button type="button" class="btn btn-warning" id="findBtn">아이디/비밀번호 찾기</button>
+			<button type="button" class="btn btn-secondary" onclick="location.href='index.jsp'">메인 페이지로</button>
 		</form>
 	</main>
 </body>

@@ -16,5 +16,6 @@ public class MemberBean {
 			user_address,
 			user_tel,
 			user_auth,
-			user_reg;
+			user_reg,
+			pre_url;
 }

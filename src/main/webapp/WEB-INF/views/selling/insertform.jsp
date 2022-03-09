@@ -58,13 +58,13 @@ input::-webkit-inner-spin-button {
 		<h3 class="mb-3">상품 등록하기</h3>
 		<form action="sell" method="post" enctype="multipart/form-data">
 			<div class="col-md-6 mb-3">
-			<label for="se_title">상품명</label>
+			<label for="se_title">상품명</label><br>
 			<input type="text" id="se_title" name="se_title">
 			</div>
 			
 			<div class="col-md-6 mb-3">
 				<div id='image_preview'>
-				<label for="se_pic">상품사진</label>
+				<label for="se_pic">상품사진</label><br>
 				<input type='file' id="se_pic" name="se_pic" multiple="multiple">
 				<div id='att_zone' data-placeholder='사진을 첨부 하려면 파일 선택 버튼을 클릭하거나 사진파일을 드래그 하세요'></div>
 				</div>
@@ -77,10 +77,10 @@ input::-webkit-inner-spin-button {
 			
 			<div class="col-md-6 mb-3">
 				<label for="se_cat">카테고리</label>
-				<select class="form-control" id="se_cat" name="se_cat">
+				<select class="form-select" id="se_cat" name="se_cat">
 					<option value="">선택</option>
 					<option value="여성패션">여성패션</option>
-					<option value="여성패션">남성패션</option>
+					<option value="남성패션">남성패션</option>
 					<option value="뷰티/미용">뷰티/미용</option>
 					<option value="디지털기기/가전">전자기기/가전</option>
 					<option value="가구/인테리어">가구/인테리어</option>
@@ -95,7 +95,7 @@ input::-webkit-inner-spin-button {
 			
 			<div class="col-md-6 mb-3">
 				<label for="se_state">상품상태</label>
-				<select class="form-control" id="se_state" name="se_state">
+				<select class="form-select" id="se_state" name="se_state">
 					<option value="">선택</option>
 					<option value="새상품/미개봉">새상품/미개봉</option>
 					<option value="새상품에 가까움">새상품에 가까움</option>
@@ -107,13 +107,13 @@ input::-webkit-inner-spin-button {
 			</div>
 			
 			<div class="col-md-6 mb-3">
-				<label for="se_price">상품 가격</label>
+				<label for="se_price">상품 가격</label><br>
 				<input type="number" id="se_price" name="se_price" min="0">
 			</div>
 		
 			<div class="mb-3" style="text-align:center;">
-			<input type="submit" class="btn btn-outline-primary" value="등록">
-			<button type="button" class="btn btn-outline-secondary" onclick="location.href='index.jsp'">돌아가기</button>
+			<input type="submit" class="btn btn-primary" value="등록">
+			<button type="button" class="btn btn-secondary" onclick="location.href='index.jsp'">돌아가기</button>
 			</div>
 		</form>
 	</div>
@@ -228,3 +228,4 @@ input::-webkit-inner-spin-button {
 
 </body>
 </html>
+<%@include file="../footer.jsp" %>

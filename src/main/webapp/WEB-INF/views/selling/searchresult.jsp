@@ -1,24 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@include file="header.jsp" %>
+<%@include file="../header.jsp" %>
 <!-- JSTL import -->
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
 <!-- bootstrap -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <meta charset="UTF-8">
-<title>** 메인 페이지 **</title>
-
+<meta charset="UTF-8">
+<title>** 검색 결과 **</title>
 <style type="text/css">
-/* a태그 밑줄 제거 */
-a:link { color: red; text-decoration: none;}
-a:visited { color: black; text-decoration: none;}
-a:hover { color: blue; text-decoration: underline;}
-
 /************Reset**************/
 * { 
   -moz-box-sizing: border-box; 
@@ -49,7 +43,6 @@ legend {
 
 /************Global**************/
 body {
-  background-color: #fff;
   color: #000;
   font: 100%/1.4 "HelveticaNeue", "Helvetica", "Arial", sans-serif;
   padding: 0;
@@ -144,22 +137,16 @@ input[type=search] {
   100% { background: #fff; }
 }
 
-
-.list li {
-  border-bottom: 1px solid #ccc;
-  display: table;
-  border-collapse: collapse;
-  width: 100%;
-}
 .inner {
   display: table-row;
   overflow: hidden;
 }
+
 .thumb { 
 	display: block;
 	overflow: hidden;
-	height: 300px;
-	width: 300px;
+	height: 150px;
+	width: 150px;
 }
 
 .thumb img {
@@ -168,97 +155,80 @@ input[type=search] {
 	min-height: 100%; /* Scale up to fill container height */
 	-ms-interpolation-mode: bicubic; /* Scaled images look a bit better in IE now */
 }
+
 .li-img {
   display: table-cell;
   vertical-align: middle;
   width: 20%;
   padding-right: 1em;
 }
+
 .li-img img {
   display: block;
   width: 100%;
   height: auto;
 }
+
 .li-text {
   display: table-cell;
   vertical-align: middle;
-  width: 60%;
+  width: 70%;
+  padding-right: 1em;
 }
+
 .li-head {
   margin: 0;
 }
-.li-sub {
+
+.li-etc {
   margin: 0;
 }
 
-@media all and (min-width: 40em) {
-  .list {
-    padding: 0.5em;
-    max-width: 70em;
-    margin: 0 auto;
-    overflow: hidden;
-  }
+@media screen and (min-width: 40em) {
   .list li {
-    padding: 0.5em;
-    display: block;
-    width: 50%;
-    float: left;
     background: none;
-    border: 0;
   }
-  .inner {
+  .li-summary {
     display: block;
-  }
-  .li-img, .li-text, .inner {
-    display: block;
-    width: auto;
-    padding: 0;
-  }
-  .li-text {
-    padding: 0.5em 0;
   }
 }
 
-@media all and (min-width: 60em) {
+@media screen and (min-width: 60em) {
   .list li {
-    width: 33.33333333%;
+    float: left;
+    width: 50%;
+  }
+  .inner {
+    padding-right: 1em;
   }
 }
 
 </style>
 </head>
 <body>
-<!-- 검색
-<div class="container">
-	<form action="${pageContext.request.contextPath}/sellingSearch" method="post">
-		<div class="input-group mb-6 w-50 col-md-12 mx-auto">
-			<input type="text" class="form-control" name="searchValue" placeholder="무엇을 찾고 계신가요?" aria-label="Recipient's username" aria-describedby="button-addon2">
-			<input class="btn btn-outline-secondary" type="image" id="button-addon2" src="${pageContext.request.contextPath}/resources/statics/images/search.svg" alt="제출버튼">
-		</div>
-	</form>
-</div> -->
-<div class="container"></div>
-<div id="pattern" class="pattern">
-	<ul class="list img-list">
-	<h3>오늘의 추천상품</h3>
-		<c:forEach var="list" items="${datalist }">
-		<li>
-			<a href="selling/detail?se_no=${list.se_no }" class="inner">
-				<div class="li-img">
-					<span class="thumb">
-						<!-- <img src="/home/resources/statics${list.filepath}" alt="${list.filename}">  -->
-						<img src="/upload${list.filepath}" alt="${list.filename}">
-					</span>
-				</div>
-				<div class="li-text">
-					<h4 class="li-head">${list.se_title}</h4>
-					<p class="li-etc"><fmt:formatNumber value="${list.se_price}" pattern="#,###"/>원</p>
-				</div>
-			</a>
-		</li>
-		</c:forEach>
-	</ul>
+<div class="wrap">
+	<div id="pattern" class="pattern">
+		<ul class="list img-list">
+		<h3>검색결과</h3>
+			<c:if test="${empty datalist }"><p>등록된 상품이 없습니다.</p></c:if>
+			<c:forEach var="list" items="${datalist }">
+			<li>
+				<a href="selling/detail?se_no=${list.se_no }" class="inner">
+					<div class="li-img">
+						<span class="thumb">
+							<img src="/upload${list.filepath}" alt="${list.filename}">
+						</span>
+					</div>
+					<div class="li-text">
+						<h4 class="li-head">${list.se_title}</h4>
+						<p class="li-etc"><fmt:formatNumber value="${list.se_price}" pattern="#,###"/>원</p>
+						<p class="li-etc">${list.se_regdate.substring(0,10)}</p>
+					</div>
+				</a>
+			</li>
+			</c:forEach>
+		</ul>
+	</div>
 </div>
 </body>
 </html>
-<%@include file="footer.jsp" %>

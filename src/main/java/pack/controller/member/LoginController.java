@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import pack.model.member.MemberDaoInter;
+import pack.model.selling.SellingDaoInter;
 
 @Controller
 public class LoginController {
@@ -31,12 +32,12 @@ public class LoginController {
 
 		if(res != null) {
 			model.addAttribute("msg", res.getUser_name()+"님 환영합니다.");
-			model.addAttribute("url","/");
+			model.addAttribute("url", bean.getPre_url());
 			
 			session.setAttribute("loginSession", res);
-			System.out.println("로그인된 회원번호는!!!!!!" + res.getUser_no());
+			System.out.println("로그인된 회원번호:" + res.getUser_no());
 			
-			return "redirect";
+			return "loginredirect";
 			
 		}else {
 			model.addAttribute("msg","아이디와 비밀번호를 확인해주세요.");

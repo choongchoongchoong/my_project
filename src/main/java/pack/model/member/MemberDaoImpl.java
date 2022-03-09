@@ -12,10 +12,31 @@ public class MemberDaoImpl implements MemberDaoInter {
 	
 	@Autowired
 	public MemberDaoInter memberDaoInter;
-	
 
+	/* 로그인 */
 	@Override
-	public boolean insertData(MemberBean bean) {  //회원가입
+	public MemberBean login(MemberBean bean) {
+		
+		return memberAnnoInter.login(bean);
+	}
+	
+	/* 아이디 찾기 */
+	@Override
+	public MemberDto findid(MemberBean bean) {
+		
+		return memberAnnoInter.findid(bean);
+	}
+
+	/* 비밀번호 찾기 */
+	@Override
+	public MemberDto findpwd(MemberBean bean) {
+		
+		return memberAnnoInter.findpwd(bean);
+	}
+
+	/* 회원가입 */
+	@Override
+	public boolean insertData(MemberBean bean) {
 		int result = memberAnnoInter.insertData(bean);
 		
 		if(result > 0) {
@@ -26,21 +47,17 @@ public class MemberDaoImpl implements MemberDaoInter {
 		}
 	}
 	
+	/* 아이디 중복체크 */
 	@Override
-	public int checkid(MemberBean bean) {  //아이디 중복체크
+	public int checkid(MemberBean bean) {
 		int result = memberAnnoInter.checkid(bean);
 		
 		return result;
 	}
-
+	
+	/* 회원탈퇴 */
 	@Override
-	public MemberBean login(MemberBean bean) {  //로그인
-		
-		return memberAnnoInter.login(bean);
-	}
-
-	@Override
-	public boolean deleteData(String user_id) {  //회원탈퇴
+	public boolean deleteData(String user_id) {
 		int result = memberAnnoInter.deleteData(user_id);
 		
 		if(result > 0) {
@@ -51,21 +68,6 @@ public class MemberDaoImpl implements MemberDaoInter {
 		}
 	}
 
-	@Override
-	public MemberDto findid(MemberBean bean) {  //아이디 찾기
-		
-		return memberAnnoInter.findid(bean);
-	}
-
-	@Override
-	public MemberDto findpwd(MemberBean bean) {  //비밀번호 찾기
-		
-		return memberAnnoInter.findpwd(bean);
-	}
-
-
-
-	
 	
 	
 	

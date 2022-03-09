@@ -15,7 +15,7 @@
 <body>
 <div class="container">
 <h3>공지사항</h3>
-	<table class="table table-stripted">
+	<table class="table">
 		<tr>
 			<th>글번호</th>
 			<th>제목</th>
