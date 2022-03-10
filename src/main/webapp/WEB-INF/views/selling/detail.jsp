@@ -243,7 +243,6 @@ a:hover { color: blue; text-decoration: underline;}
 														$("#cmtId").attr("id", coId);
 														</script>
 															<td colspan="5" align="left">${comment.co_content }</td>
-															<input type="hidden" id="out" name="out" value="">
 														
 														</tr>
 													</tbody>
@@ -264,8 +263,7 @@ a:hover { color: blue; text-decoration: underline;}
 
 <script>
 function printName(){
-	var aaa = document.getElementById('edited').value;
-	$("#out").attr("value", aaa);
+	document.getElementById('edited').value;
 }
 
 /* 댓글 수정창 */
@@ -281,7 +279,9 @@ function cmtUpdate(se_no, co_no, co_content){
 	cmtUpdateView += '<input type="text" style="height:50px;" class="form-control" value="'+co_content+'" name="co_content" id="edited">';
 	cmtUpdateView += '</td>';
 	cmtUpdateView += '<td colspan="1" align="center">';
-	cmtUpdateView += '<button type="button" id="cmtUpdateBtn" onclick="editedContent = $(\'#edited\').val(); console.log(editedContent); cmtUpdateConfirm(\'' + se_no +'\',\''+ co_no + '\',editedContent)" class="btn btn-outline-primary btn-sm" style="margin: 5px 10px;">등록</button>';
+	cmtUpdateView += '<button type="button" id="cmtUpdateBtn"'; 
+	cmtUpdateView += 'onclick="editedContent = $(\'#edited\').val(); cmtUpdateConfirm(\'' + se_no +'\',\''+ co_no + '\',editedContent)"';
+	cmtUpdateView += 'class="btn btn-outline-primary btn-sm" style="margin: 5px 10px;">등록</button>';
 	cmtUpdateView += '<button type="button" onclick="backComment(\'' + co_no +'\',\''+ co_content +'\')" class="btn btn-outline-secondary btn-sm">취소</button>';
 	cmtUpdateView += '</td>';
 	cmtUpdateView += '</tr>';
@@ -290,8 +290,7 @@ function cmtUpdate(se_no, co_no, co_content){
 
 };
 
-
-
+/* 수정된 댓글 등록 처리 */
 function cmtUpdateConfirm(se_no, co_no, editedContent){
 	console.log("등록 넘어온 코멘트 번호: "+co_no);
 	console.log("등록 넘어온 코멘트 내용: "+editedContent);
@@ -304,7 +303,7 @@ function cmtUpdateConfirm(se_no, co_no, editedContent){
 		datatype: "JSON",
 		success: function(result){
 			getComment(co_no, editedContent);
-			alert("댓글 수정 성공");
+			alert("댓글이 수정되었습니다.");
 			console.log(result);
 		},
 		error: function(error){
@@ -314,6 +313,7 @@ function cmtUpdateConfirm(se_no, co_no, editedContent){
 	
 };
 
+/* 수정된 댓글 등록 처리 후 표시 */
 function getComment(co_no, editedContent){
 	console.log("등록확인 넘어온 코멘트 번호: "+co_no);
 	console.log("등록확인 넘어온 코멘트 번호: "+editedContent);
@@ -327,6 +327,7 @@ function getComment(co_no, editedContent){
 	$('#cmtContent'+co_no).replaceWith(cmtEditedView);
 };
 
+/* 댓글 수정 취소 처리 */
 function backComment(co_no, co_content){
 	console.log("등록확인 넘어온 코멘트 번호: "+co_no);
 	console.log("등록확인 넘어온 코멘트 번호: "+co_content);

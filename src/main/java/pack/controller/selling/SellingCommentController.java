@@ -76,7 +76,7 @@ public class SellingCommentController {
 		
 		if(result) {
 			String url = "/selling/detail?se_no=" + se_no;
-			model.addAttribute("msg", "댓글이 수정되었습니다.ㅋㅋㅋㅋㅋㅋㅋ");
+			model.addAttribute("msg", "댓글이 수정되었습니다.");
 			model.addAttribute("url", url);
 			return "redirect";			
 		}else {
