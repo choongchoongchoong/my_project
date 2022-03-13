@@ -30,7 +30,7 @@ public class SignupController {
 		
 		if(result) {
 			model.addAttribute("msg","회원가입을 완료했습니다. 로그인 해주세요.");
-			model.addAttribute("url","/login");
+			model.addAttribute("url","/loginform");
 
 			return "redirect";
 			

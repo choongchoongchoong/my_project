@@ -12,6 +12,7 @@ public interface SellingDaoInter {
 	
 	boolean insertData(SellingBean bean);  //상품 등록
 	boolean updateData(SellingBean bean);  //상품 수정
+	boolean deleteCommentData(int se_no);  //상품 삭제를 위한 코멘트 삭제
 	boolean deleteData(int se_no);  //상품 삭제
 	
 	List<SellingDto> search(String searchValue);  //상품 검색

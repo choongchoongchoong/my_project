@@ -17,9 +17,10 @@ public class SellingDeleteController {
 	public String del(Model model, @RequestParam("se_no") int se_no) {
 		System.out.println(se_no);
 		
-		boolean result = sellingDaoInter.deleteData(se_no);
+		boolean result1 = sellingDaoInter.deleteCommentData(se_no);
+		boolean result2 = sellingDaoInter.deleteData(se_no);
 		
-		if(result) {
+		if(result1&&result2) {
 			model.addAttribute("msg", "판매글 삭제가 완료되었습니다.");
 			model.addAttribute("url", "/selling/list");
 			return "redirect";

@@ -17,13 +17,13 @@ public class LoginController {
 	@Autowired
 	private MemberDaoInter memberDaoInter;
  
-	@RequestMapping(value = "login", method = RequestMethod.GET)
+	@RequestMapping(value = "loginform", method = RequestMethod.GET)
 	public String login() {
 		
 		return "member/loginform";
 	}
 
-	@RequestMapping(value = "login", method = RequestMethod.POST)
+	@RequestMapping(value = "login", method = {RequestMethod.GET, RequestMethod.POST})
 	public String login(MemberBean bean, HttpServletRequest req, Model model) throws Exception {
 
 		HttpSession session = req.getSession();
@@ -32,7 +32,7 @@ public class LoginController {
 
 		if(res != null) {
 			model.addAttribute("msg", res.getUser_name()+"님 환영합니다.");
-			model.addAttribute("url", bean.getPre_url());
+			model.addAttribute("url", "/");
 			
 			session.setAttribute("loginSession", res);
 			System.out.println("로그인된 회원번호:" + res.getUser_no());

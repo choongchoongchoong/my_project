@@ -27,7 +27,7 @@
 				location.href = "${pageContext.request.contextPath}/selling";
 			}else{
 				alert("로그인 해주세요.");
-				location.href = "${pageContext.request.contextPath}/login";
+				location.href = "${pageContext.request.contextPath}/loginform";
 			}
 		})
 	})
@@ -60,7 +60,7 @@
 				<c:choose>
 					<c:when test="${loginSession == null }">
 						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/board/list">공지사항</a></li>
-						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/login">로그인</a></li>
+						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/loginform">로그인</a></li>
 						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/signup">회원가입</a></li>
 					</c:when>
 					<c:otherwise>

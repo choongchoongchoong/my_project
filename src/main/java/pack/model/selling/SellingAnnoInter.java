@@ -42,6 +42,9 @@ public interface SellingAnnoInter {
 			+ "WHERE se_no=#{se_no}")
 	public int updateData(SellingBean bean);
 	
+	/* 상품 삭제를 위한 코멘트 삭제 */
+	@Delete("DELETE FROM project_selling_comment WHERE se_no=#{se_no}")
+	public int deleteCommentData(int se_no);
 	/* 상품 삭제 */
 	@Delete("DELETE FROM project_selling WHERE se_no=#{se_no}")
 	public int deleteData(int se_no);

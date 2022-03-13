@@ -66,6 +66,17 @@ public class SellingDaoImpl implements SellingDaoInter{
 			return false;
 	}
 
+	/* 상품 삭제를 위한 코멘트 삭제 */
+	@Override
+	public boolean deleteCommentData(int se_no) {
+		int result = sellingAnnoInter.deleteCommentData(se_no);
+		
+		if(result > 0)
+			return true;
+		else
+			return false;
+	}
+	
 	/* 상품 삭제 */
 	@Override
 	public boolean deleteData(int se_no) {
