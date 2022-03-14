@@ -51,7 +51,7 @@
 			<div class="container-fluid">
 			<form class="d-flex" action="${pageContext.request.contextPath}/sellingSearch" method="post">
 				<div class="input-group w-100">
-					<input type="text" class="form-control" name="searchValue" placeholder="무슨 상품을 찾고 계신가요?????????" aria-label="Recipient's username" aria-describedby="button-addon2">
+					<input type="text" class="form-control" name="searchValue" placeholder="무슨 상품을 찾고 계신가요?" aria-label="Recipient's username" aria-describedby="button-addon2">
 					<input class="btn btn-outline-secondary" type="image" id="button-addon2" src="${pageContext.request.contextPath}/resources/statics/images/search.svg" alt="제출버튼">
 				</div>
 			</form>

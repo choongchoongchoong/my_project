@@ -33,7 +33,6 @@ public class SellingInsertController {
 			MultipartFile se_pic, HttpServletRequest req, MemberDto memberDto) throws Exception {
 		
 		//저장 경로 지정
-		//String projectPath = "C:\\Users\\dynabook\\git\\my_project\\src\\main\\webapp\\resources\\statics\\images";
 		String projectPath = "C:\\Users\\dynabook\\Pictures\\Saved Pictures";
 		//랜덤 파일명 생성
 		UUID uuid = UUID.randomUUID();
