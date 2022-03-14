@@ -33,8 +33,8 @@ public class SellingInsertController {
 			MultipartFile se_pic, HttpServletRequest req, MemberDto memberDto) throws Exception {
 		
 		//저장 경로 지정
-		//String projectPath = "C:\\Users\\dynabook\\Pictures\\Saved Pictures";
-		String projectPath = "\\home\\docker\\tomcat\\webapps\\home\\resources\\statics\\selling";
+		String projectPath = "C:\\Users\\dynabook\\Pictures\\Saved Pictures";
+		//String projectPath = "\\home\\docker\\tomcat\\webapps\\home\\resources\\statics\\selling";
 		//랜덤 파일명 생성
 		UUID uuid = UUID.randomUUID();
 		//파일 이름 = 랜덤 파일명 + 첨부파일명
