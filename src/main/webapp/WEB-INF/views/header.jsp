@@ -59,6 +59,7 @@
 			<ul class="navbar-nav mb-lg-0 w-50">
 				<c:choose>
 					<c:when test="${loginSession == null }">
+						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/test2">테스트</a></li>
 						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/board/list">공지사항</a></li>
 						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/loginform">로그인</a></li>
 						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/signup">회원가입</a></li>
