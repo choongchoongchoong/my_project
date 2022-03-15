@@ -36,6 +36,16 @@ ${catalina.home}/webapps/manager
 <img src="/home/resources/0404e1c7-7210-43f8-865f-9a6fc1dcdccb_dmlwk.jpg">
 <img src="home/resources/0404e1c7-7210-43f8-865f-9a6fc1dcdccb_dmlwk.jpg">
 
+<!-- 6번째!!! -->
+마지막 확인
+<img src="/0404e1c7-7210-43f8-865f-9a6fc1dcdccb_dmlwk.jpg">
+<img src="resources/0404e1c7-7210-43f8-865f-9a6fc1dcdccb_dmlwk.jpg">
+<img src="/resources/0404e1c7-7210-43f8-865f-9a6fc1dcdccb_dmlwk.jpg">
+<img src="/home/resources/0404e1c7-7210-43f8-865f-9a6fc1dcdccb_dmlwk.jpg">
+<img src="home/resources/0404e1c7-7210-43f8-865f-9a6fc1dcdccb_dmlwk.jpg">
+
+<img src="/home/resources/statics/0404e1c7-7210-43f8-865f-9a6fc1dcdccb_dmlwk.jpg">
+<img src="home/resources/statics/0404e1c7-7210-43f8-865f-9a6fc1dcdccb_dmlwk.jpg">
 
 
 </body>
