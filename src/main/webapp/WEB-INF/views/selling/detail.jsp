@@ -141,7 +141,8 @@ a:hover { color: blue; text-decoration: underline;}
 		<div class="content_top">
 			<div class="ct_left_area">
 				<div class="image_wrap">
-					<img src="/upload${data.filepath}" alt="${data.filename}">
+					<%-- <img src="/upload${data.filepath}" alt="${data.filename}"> --%>
+					<img src="${data.filepath}" alt="${data.filename}">
 				</div>	
 			</div>
 			<div class="ct_right_area">

@@ -247,7 +247,8 @@ input[type=search] {
 				<div class="li-img">
 					<span class="thumb">
 						<!-- <img src="/home/resources/statics${list.filepath}" alt="${list.filename}">  -->
-						<img src="/upload${list.filepath}" alt="${list.filename}">
+						<!-- <img src="/upload${list.filepath}" alt="${list.filename}"> -->
+						<img src="${list.filepath}" alt="${list.filename}">
 					</span>
 				</div>
 				<div class="li-text">
